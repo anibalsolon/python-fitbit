@@ -298,7 +298,8 @@ class Fitbit(object):
         url = "{0}/{1}/user/-/profile.json".format(*self._get_common_args())
         return self.make_request(url, data)
 
-    def _get_common_args(self, user_id=None, version=self.API_VERSION):
+    def _get_common_args(self, user_id=None, version=None):
+        version = version or self.API_VERSION
         common_args = (self.API_ENDPOINT, version,)
         if not user_id:
             user_id = '-'
