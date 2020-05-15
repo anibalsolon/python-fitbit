@@ -563,10 +563,9 @@ class ResourceAccessTest(TestBase):
         url = URLBASE + "/FOOBAR/friends.json"
         self.common_api_test('get_friends', ("FOOBAR",), {}, (url,), {})
         url = URLBASE + "/-/friends/leaders/7d.json"
-        self.common_api_test('get_friends_leaderboard', ("7d",), {}, (url,), {})
+        self.common_api_test('get_friends_leaderboard', (), {}, (url,), {})
         url = URLBASE + "/-/friends/leaders/30d.json"
-        self.common_api_test('get_friends_leaderboard', ("30d",), {}, (url,), {})
-        self.verify_raises('get_friends_leaderboard', ("xd",), {}, ValueError)
+        self.common_api_test('get_friends_leaderboard', (), {}, (url,), {})
 
     def test_invitations(self):
         url = URLBASE + "/-/friends/invitations.json"
