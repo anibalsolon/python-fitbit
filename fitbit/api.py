@@ -929,7 +929,6 @@ class Fitbit(object):
         url = "{0}/{1}/user/-/leaderboard/friends.json".format(
             *self._get_common_args(version=1.1),
         )
-        print(url)
         return self.make_request(url)
 
     def invite_friend(self, data):
