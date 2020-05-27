@@ -803,7 +803,7 @@ class Fitbit(object):
         date should be a datetime.date object.
         """
         url = "{0}/{1}/user/-/sleep/date/{year}-{month}-{day}.json".format(
-            *self._get_common_args(),
+            *self._get_common_args(version='1.2'),
             year=date.year,
             month=date.month,
             day=date.day
@@ -919,7 +919,7 @@ class Fitbit(object):
         """
         https://dev.fitbit.com/docs/friends/#get-friends
         """
-        url = "{0}/{1}/user/{2}/friends.json".format(*self._get_common_args(user_id, version=1.1))
+        url = "{0}/{1}/user/{2}/friends.json".format(*self._get_common_args(user_id, version='1.1'))
         return self.make_request(url)
 
     def get_friends_leaderboard(self):
@@ -927,7 +927,7 @@ class Fitbit(object):
         https://dev.fitbit.com/docs/friends/#get-friends-leaderboard
         """
         url = "{0}/{1}/user/-/leaderboard/friends.json".format(
-            *self._get_common_args(version=1.1),
+            *self._get_common_args(version='1.1'),
         )
         return self.make_request(url)
 
@@ -935,7 +935,7 @@ class Fitbit(object):
         """
         https://dev.fitbit.com/docs/friends/#invite-friend
         """
-        url = "{0}/{1}/user/-/friends/invitations.json".format(*self._get_common_args(version=1.1))
+        url = "{0}/{1}/user/-/friends/invitations.json".format(*self._get_common_args(version='1.1'))
         return self.make_request(url, data=data)
 
     def invite_friend_by_email(self, email):
@@ -957,7 +957,7 @@ class Fitbit(object):
         https://dev.fitbit.com/docs/friends/#respond-to-friend-invitation
         """
         url = "{0}/{1}/user/-/friends/invitations/{user_id}.json".format(
-            *self._get_common_args(version=1.1),
+            *self._get_common_args(version='1.1'),
             user_id=other_user_id
         )
         accept = 'true' if accept else 'false'
@@ -979,7 +979,7 @@ class Fitbit(object):
         """
         https://dev.fitbit.com/docs/friends/#badges
         """
-        url = "{0}/{1}/user/{2}/badges.json".format(*self._get_common_args(user_id, version=1.1))
+        url = "{0}/{1}/user/{2}/badges.json".format(*self._get_common_args(user_id, version='1.1'))
         return self.make_request(url)
 
     def subscription(self, subscription_id, subscriber_id, collection=None,
