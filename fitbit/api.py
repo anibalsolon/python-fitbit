@@ -514,7 +514,7 @@ class Fitbit(object):
         return self._resource_goal('foods/log/water', data)
 
     def time_series(self, resource, user_id=None, base_date='today',
-                    period=None, end_date=None):
+                    period=None, end_date=None, version=None):
         """
         The time series is a LOT of methods, (documented at urls below) so they
         don't get their own method. They all follow the same patterns, and
@@ -541,7 +541,7 @@ class Fitbit(object):
             end = period
 
         url = "{0}/{1}/user/{2}/{resource}/date/{base_date}/{end}.json".format(
-            *self._get_common_args(user_id),
+            *self._get_common_args(user_id, version=version),
             resource=resource,
             base_date=self._get_date_string(base_date),
             end=end
